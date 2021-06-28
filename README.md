@@ -1,9 +1,7 @@
 # 프로젝트 시작하기
-* * *
 ## Requirement
 * Node.js  
 * NPM
-* * *
 ## 실행방법
 터미널로 project_h디렉터리로 간 다음  
 yarn start 입력  
