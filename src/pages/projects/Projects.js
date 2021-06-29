@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import Header from '../../components/appbar/Appbar';
 import Categories from '../../components/categories/Categories';
@@ -19,7 +19,14 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Projects() {
   const classes = useStyles();
-
+  useEffect(()=>{
+    fetch('/api').then(response =>{
+      if(response.ok){
+        return response.json()
+      }  
+    }).then(data=> console.log(data))
+  }, [])
+    
   return (
     <React.Fragment>
       <CssBaseline />
