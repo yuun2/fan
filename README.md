@@ -1,7 +1,6 @@
 # 프로젝트 시작하기
 ## Requirement
 * Node.js  
-* NPM
 * Flask
 
 ## 실행방법
