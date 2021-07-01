@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
+import {Route, Link} from 'react-router-dom';
 
 import Header from '../../components/appbar/Appbar';
 import Categories from '../../components/categories/Categories';
+import ProjectDetails from './ProjectDetails';
 import Copyright from '../../components/copyright/Copyright';
 import useStyles from './projectsStyles';
 
@@ -26,6 +28,12 @@ export default function Projects() {
       }  
     }).then(data=> console.log(data))
   }, [])
+
+  const handleCardOnClick = (id) => {
+  //   return(
+  //     <Link to="/profile/`${id}`" component={Pro} />
+  //   )
+  }
     
   return (
     <React.Fragment>
@@ -38,7 +46,7 @@ export default function Projects() {
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <Card className={classes.card} onClick={handleCardOnClick}>
                   <CardMedia
                     className={classes.cardMedia}
                     image="https://source.unsplash.com/random"
@@ -58,6 +66,8 @@ export default function Projects() {
       <footer className={classes.footer}>
         <Copyright />
       </footer>
+
+      <Route path="/projects/:projectId" component={ProjectDetails} />
     </React.Fragment>
   );
 }
