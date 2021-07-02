@@ -20,14 +20,13 @@ def index():
 
 @app.route("/getProjects", methods=['GET'])
 def getData():
-    resultDict = {'data' : []}
+    resultDict = list()
     users_ref = db.collection(u'projects')
     docs = users_ref.stream()
     for doc in docs:
-        
         tempDict = doc.to_dict()
         tempDict['id'] = doc.id
-        resultDict['data'].append(tempDict)
+        resultDict.append(tempDict)
     return resultDict
 
 if __name__ == "__main__":
