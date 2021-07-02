@@ -46,18 +46,24 @@ export default function Projects() {
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
             {console.log(projects)}
-            {projects.map((project, index) => {
-              return(<Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image={project.image}
-                  title="Image title"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography>{project.title}</Typography>
-                </CardContent>
-              </Card>);
-            })}
+            {projects.map((project, index) => (
+              <Grid item xs={12} sm={6} md={4}>
+                <Card
+                  className={classes.card}
+                  component={Link}
+                  to={`/projects/${project.id}`}
+                >
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image={project.image}
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography>{project.title}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </main>
