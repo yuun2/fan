@@ -11,25 +11,18 @@ import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 // import CardMedia from '@material-ui/core/CardMedia';
 
-async function createFetchProjectsJob() {
-  const fetchPrj = axios.get("/getProjects");
-  return fetchPrj;
-}
-
 const ProjectDetails = ({ match }) => {
-  const { projectIndex } = match.params;
-  const [projects, setProjects] = useState([]);
   const [crntPrj, setCrntPrj] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchProjects();
-  }, []);
-
-  const fetchProjects = async () => {
-    await createFetchProjectsJob().then((r) => {
-      setCrntPrj(r.data.data[projectIndex]);
+    console.log(match.params);
+    axios.get("/getProjects").then((res) => {
+      console.log(res.data.data);
+      setCrntPrj(res.data.data[match.params.projectIndex]);
+      setIsLoading(false);
     });
-  };
+  }, []);
 
   const comments = [
     {
@@ -52,15 +45,19 @@ const ProjectDetails = ({ match }) => {
     );
   });
 
+  if (isLoading) return <div>{console.log("loading")}Loading...</div>;
+
   return (
     <div>
       <Header />
-      <Typography variant="h3">
-        {console.log("typo")}
-        {console.log(crntPrj)}
-        {/* {crntPrj.title} */}
-      </Typography>
-      {/* <img src={crntPrj.image} /> */}
+      <div>
+        <Typography variant="h3">
+          {console.log("render")}
+          {console.log(crntPrj)}
+          {crntPrj.title}
+        </Typography>
+        <img src={crntPrj.image} alt="없어용" />
+      </div>
 
       {/* comments */}
       <div>댓글 {comments_num.current}개</div>
