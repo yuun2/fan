@@ -24,9 +24,9 @@ async function createFetchProjectsJob() {
 }
 
 export default function Projects() {
-  const [projects, setProjects] = useState([]);
   const classes = useStyles();
-
+  const [projects, setProjects] = useState([]);
+  
   useEffect(() => {
     fetchProjects();
   }, []);
@@ -45,13 +45,13 @@ export default function Projects() {
       <main>
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
-            {console.log(projects)}
+            {/* {console.log(projects)} */}
             {projects.map((project, index) => (
               <Grid item xs={12} sm={6} md={4}>
                 <Card
                   className={classes.card}
                   component={Link}
-                  to={`/projects/${project.id}`}
+                  to={`/projects/${index}`}
                 >
                   <CardMedia
                     className={classes.cardMedia}
@@ -71,27 +71,7 @@ export default function Projects() {
         <Copyright />
       </footer>
 
-      <Route path="/projects/:projectId" component={ProjectDetails} />
+      <Route path="/projects/:projectIndex" component={ProjectDetails} />
     </React.Fragment>
   );
 }
-
-// {/* <Grid container spacing={4}>
-// {cards.map((card) => (
-//   <Grid item key={card} xs={12} sm={6} md={4}>
-//     <Card className={classes.card}>
-// <CardMedia
-//   className={classes.cardMedia}
-//   image="https://source.unsplash.com/random"
-//   title="Image title"
-// />
-//       <CardContent className={classes.cardContent}>
-//         <Typography>
-//           This is a media card. You can use this section to describe
-//           the content.
-//         </Typography>
-//       </CardContent>
-//     </Card>
-//   </Grid>
-// ))}
-// </Grid> */}
