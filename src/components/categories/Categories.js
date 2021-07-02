@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import useStyles from "./categoriesStyles";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/listItem";
+import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemLink from "../ListItemLink/ListItemLink";
 
