@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-import Header from "../../components/appbar/Appbar";
 import Copyright from "../../components/copyright/Copyright";
 
 import Table from "@material-ui/core/Table";
@@ -49,7 +48,6 @@ const ProjectDetails = ({ match }) => {
 
   return (
     <div>
-      <Header />
       <div>
         <Typography variant="h3">
           {console.log("render")}

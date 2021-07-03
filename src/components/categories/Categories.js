@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 
 import useStyles from "./categoriesStyles";
@@ -19,16 +19,14 @@ const Categories = () => {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const handleListItemClick = (event, index) => {
+  const handleListItemClick = useCallback((event, index) => {
     console.log(index);
     setSelectedIndex(index);
-  };
+  }, []);
 
   useEffect(() => {}, []);
 
   const menuIteams = menues.map((menu, index) => {
-    // return <NavLink activeStyle={activeStyle} to={menu.to}>{menu.primary}</NavLink>;
-    // return <ListItemLink key={index} to={menu.to} primary={menu.primary} onPage={onPage === index ? true : false} />;
     return (
       <ListItem
         component={NavLink}
@@ -36,6 +34,8 @@ const Categories = () => {
         selected={selectedIndex === index}
         onClick={(e) => handleListItemClick(e, index)}
       >
+        {console.log('render')}
+        {console.log(selectedIndex)}
         <ListItemText primary={menu.primary} />
       </ListItem>
     );
