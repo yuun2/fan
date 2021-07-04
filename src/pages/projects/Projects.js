@@ -16,24 +16,22 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 
-async function createFetchProjectsJob() {
-  const fetchPrj = axios.get("/getProjects");
-  return fetchPrj;
-}
-
 export default function Projects() {
   const classes = useStyles();
-  const [projects, setProjects] = useState([]);
-  
-  useEffect(() => {
-    fetchProjects();
+  const [projects, setProjects] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(()=> {
+    const fetchData = async() => {
+      const res = await axios.get('/getProjects');
+      setProjects(res.data.data);
+      setIsLoading(false);
+    }
+    fetchData();
   }, []);
 
-  const fetchProjects = async () => {
-    await createFetchProjectsJob().then((r) => {
-      setProjects(r.data.data);
-    });
-  };
+  if(isLoading) return <Typography>Loading...</Typography>
+  if(!projects) return <Typography>No Project..</Typography>
 
   return (
     <React.Fragment>
