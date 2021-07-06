@@ -48,6 +48,7 @@ const ProjectDetails = ({ match }) => {
 
   return (
     <div>
+      {console.log('PD render')}
       <div>
         <Typography variant="h3">
           {console.log("render")}

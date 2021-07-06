@@ -20,11 +20,8 @@ const Categories = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleListItemClick = useCallback((event, index) => {
-    console.log(index);
     setSelectedIndex(index);
   }, []);
-
-  useEffect(() => {}, []);
 
   const menuIteams = menues.map((menu, index) => {
     return (
@@ -34,8 +31,6 @@ const Categories = () => {
         selected={selectedIndex === index}
         onClick={(e) => handleListItemClick(e, index)}
       >
-        {console.log('render')}
-        {console.log(selectedIndex)}
         <ListItemText primary={menu.primary} />
       </ListItem>
     );

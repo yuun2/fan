@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 import axios from "axios";
 
-import ProjectDetails from "./ProjectDetails";
 import Copyright from "../../components/copyright/Copyright";
 import useStyles from "./projectsStyles";
 
@@ -45,7 +44,7 @@ export default function Projects() {
                 <Card
                   className={classes.card}
                   component={Link}
-                  to={`/projects/${index}`}
+                  to={`/projectDetail/${index}`}
                 >
                   <CardMedia
                     className={classes.cardMedia}
@@ -64,8 +63,6 @@ export default function Projects() {
       <footer className={classes.footer}>
         <Copyright />
       </footer>
-
-      <Route path="/projects/:projectIndex" component={ProjectDetails} />
     </React.Fragment>
   );
 }
