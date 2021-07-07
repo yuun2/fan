@@ -21,7 +21,7 @@ export default function Projects() {
     console.log('ue');
     const fetchData = async() => {
       const res = await axios.get('/getProjects');
-      setProjects(res.data.data);
+      setProjects(res.data);
       setIsLoading(false);
     }
     console.log('ue2');
