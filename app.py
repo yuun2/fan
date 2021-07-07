@@ -32,9 +32,14 @@ def getData():
     return jsonify(resultDict)
 
 
-@app.route('/post', methods=['POST'])
+@app.route('/makeProject', methods=['POST'])
 def post():
-    value = request.get_json(silent=True)  
+    value = request.get_json(silent=True)
+    value['comments'] = list()
+    value['image'] = ""
+    print(value)
+    db.collection(u'projects').document().set(value)
+
     return value
 
 if __name__ == "__main__":
