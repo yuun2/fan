@@ -2,6 +2,8 @@ from flask import Flask
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from flask import jsonify, request
+
 
 
 cred = credentials.Certificate("./path/to/serviceAccountKey.json")
@@ -27,7 +29,13 @@ def getData():
         tempDict = doc.to_dict()
         tempDict['id'] = doc.id
         resultDict.append(tempDict)
-    return resultDict
+    return jsonify(resultDict)
+
+
+@app.route('/post', methods=['POST'])
+def post():
+    value = request.get_json(silent=True)  
+    return value
 
 if __name__ == "__main__":
     app.run(debug=True)
