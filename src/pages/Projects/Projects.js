@@ -11,6 +11,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
 
 export default function Projects() {
   const classes = useStyles();
@@ -62,6 +63,7 @@ export default function Projects() {
               </Grid>
             ))}
           </Grid>
+          <Button component={Link} to={"/newproject"} >새 프로잭트 등록하기</Button>
         </Container>
       </main>
     </React.Fragment>
